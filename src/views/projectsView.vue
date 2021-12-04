@@ -7,6 +7,7 @@
         <a class="btn btn-outline-secondary" id="createNewProjectButton" href="/newproject">New Project</a>
       </div>
     </div>
+<main-component/>
 
  </div>
   
@@ -14,13 +15,12 @@
 
 <script>
 
-//import projectCard  from '@/components/projectCardComponent.vue'
+import mainComponent from "../components/Main.vue"
 
 export default {
   name: 'ProjectsView',
   components: {
-    
-   // projectCard
+    mainComponent,
     
   },
   

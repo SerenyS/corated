@@ -7,6 +7,7 @@ import Projects from '../views/projectsView.vue'
 import Teams from '../views/teamView.vue'
 import newProject from '../views/newProjectView.vue'
 import newTeam from '../views/newTeamView.vue'
+import Post from '../components/Post.vue'
 
 Vue.use(VueRouter);
 
@@ -41,7 +42,11 @@ const routes = [
         path: '/newTeam',
         name: 'newTeam',
         component: newTeam
-      }
+      },
+     {path:
+      "/post/:id",
+      name: "Post",
+      component: Post} 
 ]
 
 
