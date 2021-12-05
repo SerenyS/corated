@@ -1,37 +1,42 @@
 <template>
 <div>
-<p>Post Works !!</p>
-<div class="post-container">
-<h2>Post Details </h2>
+<div class="post-container" id="projectDetails">
+<h2>Project Details </h2>
 <hr/>
+<h3>{{postData.title}} </h3>
 <section>
 <img :src='postData.cover' />
 
-    <h3>{{postData.title}} </h3>
     <h5>{{postData.content}}</h5>
 
 </section>
-<button class="edit" v-on:click="toggleEditMode">Open/Close Edit Panel </button>
+<button  class="btn btn-outline-secondary" v-on:click="toggleEditMode"> Edit </button>
 <div v-if="editMode">
-<p>Update the current post values using the form below </p>
-<form v-on:submit="updatePost">
-<div class="form-controL">
-<label for="title"> Post Title</label>
-<input type="text" v-model="editPost.title" id="title" placeholder="your post title" >
-</div>
-<div class="form-control">
-<label for="content"> Post Content</label>
-<textarea v-model="editPost.content" id="content" placeholder="your post content"/>
-</div>
-<div class="form-control">
-<label for="cover"> Post Cover</label>
-<input type="file" id="cover" v-on:change="handleFile" >
-</div>
-<input type="hidden" id="fileref" v-model="editPost.fileref" />
-<input type="submit" value="Update Post" >
-</form>
 
-<button v-on:click="deletePost">Delete Post button</button>
+
+
+
+<b-form v-on:submit="updatePost">
+    <br>
+<b-form-group label="Projec Title">
+    <b-form-input type="text" v-model="editPost.title" id="title"></b-form-input>
+</b-form-group>
+
+<b-form-group label="Projec Description">
+    <b-form-input type="text" v-model="editPost.content" id="content"></b-form-input>
+</b-form-group>
+
+<b-form-group label="Project Image">
+    <input class="btn btn-outline-secondary" type="file" id="cover" v-on:change="handleFile" >
+</b-form-group>
+
+<input type="hidden" id="fileref" v-model="editPost.fileref" />
+
+<input type="submit" class="btn btn-outline-secondary" value="Update Post" >
+
+</b-form>
+<br>
+<button class="btn btn-danger" v-on:click="deletePost">Delete Project</button>
 </div>
 </div>
 </div>
@@ -74,7 +79,7 @@ methods:{
     
     async updatePost(e){
         e.preventDefault();
-        if (this.editPost.cover !==""){
+        if (this.editPost.cover != ""){
             let url = await firebase.handleFileUpload(this.editPost.cover);
             let fileRef= await firebase.storage.refFromURL(url);
 
@@ -91,7 +96,19 @@ methods:{
                 await storageRef.child(this.editPost.fileref).delete()
                 .catch(err=> console.log(err));
                 this.$router.go();
-            })
+            });
+        } else {
+            let _updateData={
+                title: this.editPost.title,
+                content:this.editPost.content
+            }
+
+            firebase.updatePost(this.postId,_updateData)
+            .then(()=>{
+                console.log("data has been updated");
+                this.$router.go();
+            }
+            )
         }
     },
   
@@ -105,3 +122,10 @@ methods:{
 }
 }
 </script>   
+<style>
+#projectDetails{
+    padding: 15px;
+    
+  
+}
+</style>

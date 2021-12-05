@@ -1,27 +1,28 @@
 <template>
+<div class= "col-md-6" id="newProjectContainer">
+<b-form v-on:submit= "createPost">
+<p>Lets create this project</p>
 
-<form v-on:submit= "createPost">
-    <p>Fill in the form below to add a new post</p>
+<b-form-group label="Projec Title">
+    <b-form-input type="text" v-model= "newPost.title" id="title" placeholder="Name your project" ></b-form-input>
+</b-form-group>
 
-<div class="form-control">
-<label for="title"> Post Title</label>
-<input type="text" v-model= "newPost.title" id="title" placeholder="your post title" >
-</div>
+<b-form-group label="Project Description">
+    <b-form-input type="text"  v-model="newPost.content" id="content" placeholder="Describe your project"></b-form-input>
+</b-form-group>
 
-<div class="form-control">
-<label for="content"> Post Content</label>
-<textarea v-model="newPost.content" id="content" placeholder="your post content"/>
-</div>
+<b-form-group label="Project Image"></b-form-group>
 
 <div class="form-controL">
-<label for="cover"> Post Cover</label>
-<input type="file" id="cover" v-on:change="handleFile" >
+<input type="file" id="cover" class="btn btn-outline-secondary" v-on:change="handleFile" >
 </div>
+<br>
 
-<input type="submit" value="Create Post"/>
+ <b-button type="submit" value="Create Post"> Create New Project</b-button>
 
-</form>
+</b-form>
 
+</div>
 </template>
 
 <script>
@@ -56,7 +57,7 @@ export default {
 
         firebase.createPost(_newPost)
         .then(() => {
-            this.$router.push({name: "Main"});
+            this.$router.push({name: "Projects"});
             }).catch( err => console.log(err));
         },
         handleFile(e){
@@ -68,3 +69,11 @@ export default {
 
 
 </script>
+<style>
+#newProjectContainer{
+   padding-top: 5%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+</style>

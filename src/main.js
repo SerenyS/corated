@@ -4,6 +4,7 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import {firestorePlugin} from "vuefire";
 import router from "./router"
 
+
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -14,6 +15,8 @@ Vue.use(IconsPlugin)
 
 // Make Firestore available throughout your project
 Vue.use(firestorePlugin)
+
+
 
 Vue.config.productionTip = false
 

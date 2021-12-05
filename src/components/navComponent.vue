@@ -17,7 +17,7 @@
         <b-nav-item-dropdown right>
       
           <template #button-content>
-            <em ><i class="fas fa-user"></i>   User</em>
+            <em > <b-icon icon="person-circle"></b-icon></em>
           </template>
           <b-dropdown-item href="#">Profile</b-dropdown-item>
           <b-dropdown-item href="\login">Login</b-dropdown-item>
