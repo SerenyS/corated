@@ -113,7 +113,7 @@ methods:{
     deletePost(){
         firebase.deletePost(this.postId, this.postData.fileref)
         .then(()=>{
-            this.$router.push({name:"projects"});
+            this.$router.push({name:"Projects"});
         })
         .catch((err)=> console.log(err));
     }

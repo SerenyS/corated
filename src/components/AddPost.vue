@@ -28,6 +28,7 @@
 <script>
 
 import firebase from "../firebase/index"
+// import {nanoid} from "nanoid";
 
 export default {
     name: "AddPost",
@@ -51,7 +52,7 @@ export default {
         let _newPost = {
             title: this.newPost.title,
             content: this.newPost.content,
-            cover: url,
+            cover: url ,
             fileref: fileRef.location.path
         }
 
