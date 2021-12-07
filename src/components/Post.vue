@@ -1,11 +1,11 @@
 <template>
-<div>
+<div class="container-fluid">
 <div class="post-container" id="projectDetails">
 <h2>Project Details </h2>
 <hr/>
 <h3>{{postData.title}} </h3>
 <section>
-<img :src='postData.cover' />
+<img :src='postData.cover' style="width: 400px;   height: 600px; object-fit: scale-down"/>
 
     <h5>{{postData.content}}</h5>
 
@@ -14,9 +14,7 @@
 <div v-if="editMode">
 
 
-
-
-<b-form v-on:submit="updatePost">
+<b-form id="singlePost" v-on:submit="updatePost">
     <br>
 <b-form-group label="Projec Title">
     <b-form-input type="text" v-model="editPost.title" id="title"></b-form-input>
@@ -26,9 +24,9 @@
     <b-form-input type="text" v-model="editPost.content" id="content"></b-form-input>
 </b-form-group>
 
-<b-form-group label="Project Image">
+<!-- <b-form-group label="Project Image">
     <input class="btn btn-outline-secondary" type="file" id="cover" v-on:change="handleFile" >
-</b-form-group>
+</b-form-group> -->
 
 <input type="hidden" id="fileref" v-model="editPost.fileref" />
 
@@ -126,6 +124,6 @@ methods:{
 #projectDetails{
     padding: 15px;
     
-  
 }
+
 </style>

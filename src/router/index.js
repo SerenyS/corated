@@ -43,10 +43,12 @@ const routes = [
         name: 'newTeam',
         component: newTeam
       },
-     {path:
-      "/post/:id",
+
+     {
+       path:"/post/:id",
       name: "Post",
-      component: Post} 
+      component: Post
+    } ,
 ]
 
 

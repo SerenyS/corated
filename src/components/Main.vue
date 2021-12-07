@@ -1,38 +1,35 @@
 <template>
-  <div>
-    <div class="col-sm-4" id="projectContainer">
+  <div class ="container-fluid">
+
+    <div  class="row py-5" id="projectContainer">
+      
       <div class="card mb-4 shadow-sm" v-for="post in allposts" :key="post.id">
         <img
           class="card-img-top"
-          style="height: 225px; width: 100%; display: block"
+        
+          style="height: 225px; width: 100%; display: block ;background-size: cover; "
           v-bind:style='{ backgroundImage: "url(" + post.data.cover + ")" }'
         >
 
         <div class="card-body">
         <h2 class="title">{{ post.data.title }}</h2>
-          <div class="description">description</div>
+          <div class="description">{{post.data.content}}</div>
           <br />
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
               <button type="button" class="btn btn-sm btn-outline-secondary" >
                <router-link :to="'/post/'+ post.id"> View </router-link>
               </button>
-              <!-- <button type="button" class="btn btn-sm btn-outline-secondary">
-                Edit
-              </button>
-              <button type="button" class="btn btn-sm btn-outline-secondary">
-                <i class="fas fa-trash" ></i> Delete
-              </button> -->
             </div>
 
             <button type="button" class="btn btn-sm btn-outline-secondary">
              <b-icon icon="suit-heart-fill"></b-icon> Like It
             </button>
-            <span>#</span>
+            <span></span>
             <button type="button" class="btn btn-sm btn-outline-secondary">
               <b-icon icon="hand-thumbs-up-fill" ></b-icon> Boo It
             </button>
-            <span>#</span>
+            <span></span>
           </div>
         </div>
       </div>
@@ -41,11 +38,11 @@
 </template>
 <script>
 import firebase from "../firebase/index";
-import {BIcon} from 'bootstrap-vue'
+
 export default {
 name: "Main",
 components:{
-    BIcon
+    
 },
 data(){
     return {
