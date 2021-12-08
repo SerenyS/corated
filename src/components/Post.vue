@@ -77,6 +77,7 @@ methods:{
     
     async updatePost(e){
         e.preventDefault();
+        //need to correct
         if (this.editPost.cover != ""){
             let url = await firebase.handleFileUpload(this.editPost.cover);
             let fileRef= await firebase.storage.refFromURL(url);

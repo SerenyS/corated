@@ -7,7 +7,7 @@
         <img
           class="card-img-top"
         
-          style="height: 225px; width: 100%; display: block ;background-size: cover; "
+          style="height: 225px; display: block ;background-size: cover; "
           v-bind:style='{ backgroundImage: "url(" + post.data.cover + ")" }'
         >
 
@@ -23,13 +23,13 @@
             </div>
 
             <button type="button" class="btn btn-sm btn-outline-secondary">
-             <b-icon icon="suit-heart-fill"></b-icon> Like It
+             <b-icon icon="suit-heart-fill" @click="like"></b-icon> Like It
             </button>
-            <span></span>
+            <span>{{post.data.like}}</span>
             <button type="button" class="btn btn-sm btn-outline-secondary">
-              <b-icon icon="hand-thumbs-up-fill" ></b-icon> Boo It
+              <b-icon icon="emoji-frown-fill"  @click="dislike" ></b-icon> Boo It
             </button>
-            <span></span>
+            <span>{{post.data.dislike}} </span>
           </div>
         </div>
       </div>
@@ -63,15 +63,23 @@ created(){
         }).catch(err=> {
             console.log(err);
         })
-    }
+    },
+
+    methods:{
+    like(e){
+    e.preventDefault();
+     let newLike =  this.post.like +1;
+     firebase.updatePost(this.postId,newLike)  
+
+    },
+    dislike(e){
+    e.preventDefault();
+     let newDislike =  this.post.dislike +1;
+     firebase.updatePost(this.postId,newDislike)  
+    },}
+
 }
-//   methods:{
-//     like(){
-//      this.project.like +1;
-//     },
-//     dislike(){
-//     this.project.dislike +1;
-//     },
+
     
 </script>
 <style >

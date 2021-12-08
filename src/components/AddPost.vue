@@ -38,8 +38,9 @@ export default {
                 newPost:{
                 title: "",
                 content: "",
-                cover: ""
-                 }
+                cover: "",
+                like: 0,
+                dislike:0,                 }
                  }
              },
 
@@ -53,6 +54,8 @@ export default {
             title: this.newPost.title,
             content: this.newPost.content,
             cover: url ,
+            like:0,
+            dislike:0,
             fileref: fileRef.location.path
         }
 
