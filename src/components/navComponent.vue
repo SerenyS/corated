@@ -1,7 +1,7 @@
 <template>
 <div >
   <b-navbar toggleable="lg" type="dark" id="navigation">
-    <b-navbar-brand href="\"> <i class="fas fa-thumbs-up"></i> CoRated</b-navbar-brand>
+    <b-navbar-brand href="\"> CoRated</b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
