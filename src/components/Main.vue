@@ -1,17 +1,18 @@
 <template>
   <div class ="container-fluid">
 
-    <div  class="row py-5" id="projectContainer">
+    <div  class="row " >
       
-      <div class="card mb-4 shadow-sm" v-for="post in allposts" :key="post.id">
+      <div class="card mb-4 shadow-sm"  id="projectContainer" v-for="post in allposts" :key="post.id">
+       <a class = "column col-xs-6" id = "zoomIn">
         <img
           class="card-img-top"
-        
+
           style="height: 225px; display: block ;background-size: cover; "
           v-bind:style='{ backgroundImage: "url(" + post.data.cover + ")" }'
-        >
+        ></a>
 
-        <div class="card-body">
+        <div class="card-body" style="padding:0,10px ">
         <h2 class="title">{{ post.data.title }}</h2>
           <div class="description">{{post.data.content}}</div>
           <br />
@@ -25,16 +26,19 @@
             <button type="button" class="btn btn-sm btn-outline-secondary">
              <b-icon icon="suit-heart-fill" @click="like"></b-icon> Like It
             </button>
-            <span>{{post.data.like}}</span>
+            <span>   {{post.data.like}}   </span>
             <button type="button" class="btn btn-sm btn-outline-secondary">
               <b-icon icon="emoji-frown-fill"  @click="dislike" ></b-icon> Boo It
             </button>
-            <span>{{post.data.dislike}} </span>
+            <span>{{post.data.dislike}}   </span>
           </div>
         </div>
       </div>
     </div>
+    
+    
   </div>
+  
 </template>
 <script>
 import firebase from "../firebase/index";
@@ -83,5 +87,18 @@ created(){
     
 </script>
 <style >
+.column#zoomIn img {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.column#zoomIn:hover img {
+	-webkit-transform: scale(1.15);
+	transform: scale(1.15);
+}
+#projectContainer{
+  padding: 50px;
+}
 
 </style>

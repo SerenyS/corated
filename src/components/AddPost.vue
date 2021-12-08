@@ -39,8 +39,8 @@ export default {
                 title: "",
                 content: "",
                 cover: "",
-                like: 0,
-                dislike:0,                 }
+                like: "",
+                dislike:"",                 }
                  }
              },
 

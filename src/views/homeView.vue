@@ -4,14 +4,13 @@
       <div class="col-md-5" id="mainText" >
         <h1 class="display-4 font-weight-normal">CoRated</h1>
         <p class="lead font-weight-normal">Visualize, Vote, Create</p>
+
         <a class="btn btn-outline-secondary" id="createNewProjectButton" href="/newproject">Create a new project</a>
       </div>
   </div>
 </template>
 
 <script>
-
-
 
 
 export default {
@@ -23,6 +22,9 @@ export default {
 }
 </script>
 <style>
+
+
+
 #myVideo {
   object-fit: cover;
   width: 100vw;
